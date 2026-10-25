@@ -2,7 +2,7 @@
   "name": "cardlane",
   "version": "1.0.0",
   "private": true,
-  "description": "A miniature card-issuing ledger for studying authorization, clearing, reversal, and refunds.",
+  "description": "A miniature card-issuing ledger for authorization, clearing, reversal, and refunds.",
   "type": "module",
   "engines": {
     "node": ">=22.5"

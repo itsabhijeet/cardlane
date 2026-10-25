@@ -1,8 +1,6 @@
 # Cardlane
 
-A small card-issuing ledger you can run, test, and walk through in an interview.
-
-Cardlane is an independent study project. It is not affiliated with Reap, Visa, or any card network. It does not store a real PAN, connect to a scheme, or move money. Amounts are integer minor units (cents).
+A small card-issuing ledger. It does not store a real PAN, connect to a card network, or move money. Amounts are integer minor units (cents).
 
 It models the lifecycle published by card-issuing APIs:
 
@@ -30,11 +28,9 @@ npm run dev
 curl -s localhost:3000/health
 ```
 
-Set `PORT`, `DATABASE_PATH`, and `WEBHOOK_SECRET` before using it for anything other than local study. The default secret is `dev-only-change-me`.
+Set `PORT`, `DATABASE_PATH`, and `WEBHOOK_SECRET` outside local development. The default secret is `dev-only-change-me`.
 
-## What to open in a recruiter conversation
-
-Spend five minutes on three files, in this order.
+## Where the behavior lives
 
 1. `src/domain/decide.ts` — the decline order. A lost card returns `41` before anyone mentions the balance. Ecommerce without 3DS returns `5C`. The balance check is only the last no.
 2. `src/ledger/service.ts`, the `move` method — one `UPDATE` that reserves funds only when `available_minor + delta >= 0`. A second request with the same `authorizationId` returns the original decision and does not reserve again. A different body with that id is a conflict.
