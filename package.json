@@ -1,0 +1,22 @@
+{
+  "name": "cardlane",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A miniature card-issuing ledger for studying authorization, clearing, reversal, and refunds.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.5"
+  },
+  "scripts": {
+    "dev": "node --disable-warning=ExperimentalWarning --import tsx src/main.ts",
+    "demo": "node --disable-warning=ExperimentalWarning --import tsx scripts/demo.ts",
+    "test": "NODE_OPTIONS='--disable-warning=ExperimentalWarning' node ./node_modules/vitest/vitest.mjs run",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3",
+    "vitest": "^5.0.5"
+  }
+}
