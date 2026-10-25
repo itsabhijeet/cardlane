@@ -32,7 +32,7 @@ Set `PORT`, `DATABASE_PATH`, and `WEBHOOK_SECRET` outside local development. The
 
 ## Where the behavior lives
 
-1. `src/domain/decide.ts` — the decline order. A lost card returns `41` before anyone mentions the balance. Ecommerce without 3DS returns `5C`. The balance check is only the last no.
+1. `src/domain/decide.ts` — the decline order. A lost card returns `41` before the balance is checked. Ecommerce without 3DS returns `5C`. The balance check is only the last no.
 2. `src/ledger/service.ts`, the `move` method — one `UPDATE` that reserves funds only when `available_minor + delta >= 0`. A second request with the same `authorizationId` returns the original decision and does not reserve again. A different body with that id is a conflict.
 3. `test/ledger.test.ts` — partial clear, overclear, reversal, timeout advice after a local approval, and advice that arrives after clearing.
 
